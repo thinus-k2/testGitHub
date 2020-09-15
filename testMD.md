@@ -1,7 +1,7 @@
 # K2 JSSP Share OAuth Setup
 
 To use the JSSP broker with ShareDo, you need to use OAuth Authentication.
-So when you setup the Service Instance you will need to choose an OAuth resource that can get and use token from ShareDo.
+When you setup the Service Instance you will need to choose an OAuth resource that can get and use token from ShareDo.
 
 There are 2 parts:
   - ShareDo OAuth setup
@@ -10,11 +10,11 @@ There are 2 parts:
 
 # Part 1: ShareDo OAuth setup
 
-You will need to get OAuth configured in ShareDo.
+You will need to get OAuth configured in ShareDo. This is needed to allow K2 to generate OAuth token to send with requests to ShareDo and authorize the correct user.
 
-Currently they don’t have an admin page where you can do this yourself. So you will need to contact: support@slicedbread.co.uk
+Currently ShareDo does not have an admin page where you can do this yourself. Please send an email to support@slicedbread.co.uk to request OAuth setup and details.
 
-You will need to supply then with your ShareDo instance details, and also the Redirect URI they should add on their OAuth configuration.
+You will need to supply them with your ShareDo instance details, and also the Redirect URI that needs to be added to their OAuth configuration.
 The Redirect URI would be https://{Your Server Host Address}/Identity/token/oauth/2.
 
 *Example: https://void.onk2stable.com/Identity/token/oauth/2*
@@ -28,7 +28,7 @@ Once you have those details, you can proceed to Part 2.
 
 # Part 2: K2 OAuth setup
 
-To use OAuth in K2, you will need to setup and OAuth resource, but before we do that, we need to define a OAuth Resource Type for the OAuth Resource.
+To use OAuth in K2, you will need to setup and OAuth resource in K2, but before you do that, you need to define a OAuth Resource Type for the OAuth Resource.
 
 For OAuth ResourceType reference: https://help.k2.com/onlinehelp/Platform/UserGuide/June/default.htm#K2-Management-Site/Authentication/ResourceTypes.htm%3FTocPath%3DAdminister%7CK2%2520Management%7CAuthentication%7COAuth%7C_____1
 
@@ -110,6 +110,9 @@ Steps to add Resource Type Parameters:
    6. Tick the Refresh Request checkbox
    7. Click OK
 
+Example of OAuth Resource Type setup:  
+![Alt text](/OAuthSetup-K2-ResourceType.jpg?raw=true "OAuth Resource Type")
+
 Now you need to setup and configure the OAuth Resource with the values you got when OAuth was setup on ShareDo
 
 Steps to setup OAuth Resource:
@@ -144,6 +147,10 @@ Now you need to configure the Resource Parameters.
 6. In the Resource Parameter List select client_secret and click on the Edit button
    1. Type the Client Secret you got when you configured OAuth in ShareDo in Part 1 into the Token Value and Refresh Value.
    2. Click OK
+
+Example of OAuth Resource setup:  
+![Alt text](/OAuthSetup-K2-Resource.jpg?raw=true "OAuth Resource Type")
+
 
 Now when you Register the Service instance, you can choose OAuth as the Authentication Type and select the ShareDo OAuth resource you created here.  
 This might prompt you to login if it does not have a token for you yet.
